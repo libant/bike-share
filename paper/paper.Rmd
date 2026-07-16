@@ -1,0 +1,354 @@
+---
+title: "Bikes for Some: How Bike Share Toronto Functions as a Downtown Transit Connector and What That Means for the Neighbourhoods Left Behind"
+author: "Victor Timir"
+date: "July 14, 2026"
+output:
+  pdf_document:
+    latex_engine: pdflatex
+    number_sections: true
+    toc: false
+abstract: |
+  Analysis of 5,713,141 Bike Share Toronto trips in 2023, combined with TTC transit schedules and City of Toronto neighbourhood boundary data, reveals that the system operates primarily as a short-distance transit connector concentrated in the downtown core. The median trip duration of 11.4 minutes and the finding that 43.5% of all trips originate within 500 metres of a TTC subway station confirm this connector role — yet the same data exposes a sharp spatial inequality: 36 of 158 Toronto neighbourhoods have zero bike share coverage, and 45 are underserved by both bike share and surface transit simultaneously. These dual-gap neighbourhoods — disproportionately located in Scarborough, Etobicoke, and North York — are the communities where a transit-integrated cycling option would have the greatest impact on mobility equity. The findings point toward a clear investment prescription: new stations clustered near high-frequency bus stops in outer neighbourhoods, where bikes would reduce rebalancing costs while extending transit reach to communities currently excluded from the network.
+bibliography: references.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo    = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  fig.align = "center",
+  out.width = "90%"
+)
+
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+# Paths relative to paper/ directory
+OUT <- "../data/analysis_data"
+```
+
+# Introduction
+
+Cities across North America have increasingly turned to bike share as a tool of urban mobility, promising affordable, flexible transportation that complements and extends existing transit networks. Toronto's Bike Share program, launched in 2011 under the management of the Toronto Parking Authority, has expanded substantially since its founding: by 2023 the system recorded 5,713,141 trips across more than 1,000 stations, representing a near-fivefold increase in annual ridership since 2017 [@toronto_parking_ridership_2024]. These figures are regularly cited as evidence of the program's success and of growing cycling culture in the city.
+
+Yet aggregate ridership figures can obscure as much as they reveal. A bike share system generates usage wherever stations exist, and station placement reflects the priorities — and the path dependencies — of the institutions that built it. A program that grew outward from the downtown core over more than a decade will inevitably produce usage patterns concentrated downtown, regardless of where demand for cycling infrastructure is greatest. The relevant question is not how many trips the system generates in aggregate, but who those trips serve and where they are possible.
+
+This paper addresses that question by analysing Bike Share Toronto's 2023 ridership data in combination with TTC transit schedules and City of Toronto neighbourhood boundary data. The central finding is that the system functions strongly as a last-mile transit connector — the median trip lasts 11.4 minutes and nearly half of all trips begin within an easy walk of a subway station — but that this connector role is available only to residents of the inner city. Thirty-six of 158 Toronto neighbourhoods have no bike share station within 500 metres of their boundaries, and 45 are simultaneously underserved by both bike share and surface transit. These communities are not on the margins of the system; they are absent from it entirely.
+
+The remainder of this paper is structured as follows. Section 2 describes the four datasets used and discusses limitations and ethical considerations. Section 3 presents findings on ridership patterns, the transit-connector nature of trips, station-level utilization and flow imbalance, and neighbourhood-level coverage gaps. Section 4 discusses the policy implications of these findings, with attention to which communities represent the highest-priority case for network investment.
+
+# Data
+
+## Bike Share Ridership Data
+
+The primary dataset is Toronto Bike Share ridership data for calendar year 2023, obtained from the City of Toronto Open Data Portal [@toronto_parking_ridership_2024]. The data is distributed as twelve monthly CSV files containing one record per trip. Each record includes a trip identifier, trip duration in seconds, start and end station IDs, start and end station names, departure and arrival timestamps, bicycle ID, and user type classified as either Annual Member or Casual Member. The twelve files contain 5,713,141 trip records.
+
+Processing required encoding standardization: January through March and December used UTF-8, while April through November used Windows-1252 (CP1252), with the difference appearing in station names containing en-dash characters. Column names were normalized to snake_case across all files and timestamps parsed to datetime format. Approximately 6% of records had null values in station name fields — likely reflecting trips to or from virtual floating-bike stations or malfunctioning docking points — but station IDs were present in all records and null names did not affect quantitative analysis. Data were processed using Python [@python_2024] with the pandas [@pandas_2024] and geopandas [@geopandas_2024] libraries.
+
+## Station Information
+
+Station coordinates, names, and dock capacities were obtained from the Bike Share Toronto live feed conforming to the General Bikeshare Feed Specification (GBFS), accessed via the City of Toronto Open Data Portal and saved locally [@toronto_parking_stations_2024]. The feed contains 1,045 stations with latitude, longitude, and capacity attributes. Of these, 750 stations recorded at least one trip in 2023; an additional 67 station identifiers appeared in the ridership data but were absent from the current GBFS feed, indicating those stations were retired during or prior to the study period.
+
+## TTC General Transit Feed Specification Data
+
+Toronto Transit Commission route and schedule data was obtained from the City of Toronto Open Data Portal in GTFS format [@ttc_gtfs_2024]. The archive contains stop locations, route definitions, trip schedules, and service calendar information. This study used two components. First, the stops and stop_times files were used to compute surface transit service frequency — measured as total scheduled weekday departures per stop — aggregated to the neighbourhood level via spatial join. Subway routes (route_type = 1, covering TTC Lines 1, 2, and 4) were excluded from the surface frequency calculation and treated separately: their 71 unique physical stations were used to compute the distance from each bike share station to its nearest rapid transit connection.
+
+## Toronto Neighbourhood Boundaries
+
+Neighbourhood polygon geometries were obtained from the City of Toronto Open Data Portal as a GeoJSON file in WGS84 projection [@toronto_neighbourhoods_2024]. The dataset defines 158 current neighbourhoods covering the full extent of the former City of Toronto and the amalgamated suburban municipalities. Station coverage was computed by creating 500-metre buffers around each active bike station — projected to UTM Zone 17N (EPSG:32617) — and calculating the proportion of each neighbourhood polygon's area intersected by the union of all station buffers.
+
+## Measurement and Limitations
+
+Several limitations apply. The 500-metre coverage buffer is a geometric approximation of walkable access; actual walking distances vary with street topology and pedestrian infrastructure. The GBFS station feed reflects current station locations, which may differ modestly from 2023 locations. Bus service frequency is computed from a single GTFS snapshot and does not capture variation across service periods. These limitations suggest coverage estimates are indicative rather than precise.
+
+This analysis also does not incorporate socioeconomic or demographic data at the neighbourhood level. While the spatial pattern of coverage gaps aligns closely with the geography of lower-income and transit-dependent communities in Toronto, this study does not formally demonstrate that relationship. Integration of census dissemination area data is a natural direction for future research.
+
+## Ethical Considerations
+
+The ridership data is anonymized at the trip level: no user identifiers are present and station names are public information. The analysis does not attempt to infer individual behaviour. All data is publicly available under the Open Government Licence — Toronto, and no special access was required for any component of this study.
+
+# Results
+
+## Ridership Patterns and Seasonality
+
+Figure \ref{fig:monthly} shows monthly trip counts across 2023. Ridership follows a pronounced seasonal curve, rising from 172,776 trips in February to 760,141 in August — a 4.4-fold seasonal swing. The May-through-October period accounts for 73% of annual ridership. Table \ref{tab:summary} summarises key system statistics.
+
+```{r monthly-data}
+monthly <- tibble(
+  month = factor(
+    c("Jan","Feb","Mar","Apr","May","Jun",
+      "Jul","Aug","Sep","Oct","Nov","Dec"),
+    levels = c("Jan","Feb","Mar","Apr","May","Jun",
+               "Jul","Aug","Sep","Oct","Nov","Dec")
+  ),
+  trips = c(180135, 172776, 224545, 380346, 589217, 663691,
+             735924, 760141, 754303, 601075, 393873, 257115)
+)
+```
+
+```{r monthly, fig.cap="Monthly Bike Share Toronto trip counts, 2023. Ridership ranges from 172,776 in February to 760,141 in August, a 4.4-fold seasonal difference. The May--October period accounts for 73\\% of annual ridership.\\label{fig:monthly}"}
+ggplot(monthly, aes(x = month, y = trips)) +
+  geom_col(fill = "#1756A4", width = 0.7) +
+  geom_text(
+    data = filter(monthly, month %in% c("Feb", "Aug")),
+    aes(label = scales::comma(trips)),
+    vjust = -0.5, size = 2.8, colour = "grey30"
+  ) +
+  scale_y_continuous(
+    labels  = scales::label_comma(scale = 1e-3, suffix = "K"),
+    expand  = expansion(mult = c(0, 0.12))
+  ) +
+  labs(x = NULL, y = "Trips") +
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor   = element_blank(),
+    axis.line.x        = element_line(colour = "grey80"),
+    plot.margin        = margin(6, 6, 6, 6)
+  )
+```
+
+```{r summary-table}
+summary_tbl <- tibble(
+  Metric = c(
+    "Total trips",
+    "Peak month (August)",
+    "Quietest month (February)",
+    "Median trip duration",
+    "95th percentile trip duration",
+    "Annual Member trips",
+    "Casual Member trips",
+    "Weekday trips",
+    "Active stations (\\(\\geq\\)1 trip in 2023)",
+    "Total stations in GBFS feed",
+    "Retired station IDs in trip history"
+  ),
+  Value = c(
+    "5,713,141",
+    "760,141",
+    "172,776",
+    "11.4 min",
+    "40.2 min",
+    "364,357 (6.4\\%)",
+    "5,348,784 (93.6\\%)",
+    "4,149,977 (72.6\\%)",
+    "750",
+    "1,045",
+    "67"
+  )
+)
+
+kable(
+  summary_tbl,
+  format   = "latex",
+  booktabs = TRUE,
+  escape   = FALSE,
+  caption  = "Summary statistics, Bike Share Toronto 2023.\\label{tab:summary}",
+  col.names = c("Metric", "Value")
+) |>
+  kable_styling(latex_options = c("hold_position"), font_size = 10) |>
+  column_spec(2, width = "5cm")
+```
+
+User type composition is notable: 93.6% of 2023 trips were made by Casual Members, with Annual Members accounting for just 6.4% (364,357 trips). This proportion is anomalous relative to mature bike share systems elsewhere — Citi Bike in New York City has reported annual member trip shares exceeding 70% [@lyft_2023]. Whether this reflects the pricing structure of Toronto's annual membership, the system's recent geographic expansion, or a recreation-heavy user base requires further investigation, but it shapes the equity question: a system dominated by episodic rather than habitual use is less likely to serve as a primary mobility tool for transit-dependent residents.
+
+## Bike Share as a Transit Connector
+
+The median trip duration of 11.4 minutes, with 75% of trips completed in under 18.7 minutes, is the behavioural signature of a last-mile connector mode. Figure \ref{fig:proximity} confirms this interpretation spatially. Of all 5,713,141 trips, 18.0% began within 200 metres of a TTC subway station — an easy two-minute walk — and an additional 25.5% began within 200 to 500 metres. Combined, 43.5% of all trips in 2023 originated within a comfortable walking radius of rapid transit. Only 12.5% of trips originated more than two kilometres from the nearest subway stop.
+
+```{r proximity-data}
+proximity <- tibble(
+  bucket = factor(
+    c("<200 m", "200–500 m", "500 m–1 km", "1–2 km", ">2 km"),
+    levels = c("<200 m", "200–500 m", "500 m–1 km", "1–2 km", ">2 km")
+  ),
+  pct = c(18.0, 25.5, 21.3, 22.6, 12.5)
+)
+```
+
+```{r proximity, fig.cap="Share of 2023 trips by distance from origin station to nearest TTC subway station. 43.5\\% of all trips begin within 500 metres of a subway station, confirming the system's primary role as a short-distance transit extension. Only 12.5\\% originate more than two kilometres from rapid transit.\\label{fig:proximity}"}
+ggplot(proximity, aes(x = bucket, y = pct)) +
+  geom_col(fill = "#1756A4", width = 0.65) +
+  geom_text(
+    aes(label = paste0(pct, "%")),
+    vjust = -0.45, size = 3, colour = "grey30"
+  ) +
+  scale_y_continuous(
+    labels = scales::label_percent(scale = 1),
+    expand = expansion(mult = c(0, 0.14)),
+    limits = c(0, 30)
+  ) +
+  labs(x = "Distance to nearest subway station", y = "% of 2023 trips") +
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor   = element_blank(),
+    axis.line.x        = element_line(colour = "grey80"),
+    plot.margin        = margin(6, 6, 6, 6)
+  )
+```
+
+The concentration of trip origins near subway infrastructure confirms that active users predominantly leverage bike share as a transit extension. It is important to note, however, that this transit-connector role is conditional on proximity to transit. As Section 3.4 shows, the neighbourhoods furthest from the subway are also those with the fewest bike stations, so the 12.5% of trips originating beyond two kilometres from subway does not represent a system serving transit-poor communities — it represents the residual of the few outlying stations that happen to exist.
+
+## Station-Level Utilization and Flow Imbalance
+
+```{r stations-load}
+stations <- read_csv(
+  file.path(OUT, "stations.csv"),
+  show_col_types = FALSE
+)
+```
+
+Among the 750 active stations, Table \ref{tab:top10} shows that the ten busiest by total activity are all located in the downtown core. York Street at Queens Quay West led the system with 98,508 trips, followed by Union Station (94,414) and Bay Street at College Street (88,038). Utilization rates — total activity divided by dock capacity and days in the year — reached 10.6 trips per dock per day at Richmond Street East at Yonge Street. By contrast, the ten least-active stations each recorded between 2 and 8 total trips for the entire year.
+
+```{r top10-table}
+top10 <- stations |>
+  filter(has_2023_trips == TRUE) |>
+  slice_max(total_activity, n = 10) |>
+  select(name, capacity, total_activity, net_flow, trips_per_dock_per_day) |>
+  mutate(
+    net_flow = if_else(net_flow > 0,
+                       paste0("+", scales::comma(net_flow)),
+                       scales::comma(net_flow)),
+    total_activity        = scales::comma(total_activity),
+    trips_per_dock_per_day = round(trips_per_dock_per_day, 1)
+  )
+
+kable(
+  top10,
+  format   = "latex",
+  booktabs = TRUE,
+  escape   = TRUE,
+  caption  = "Top 10 stations by total activity (departures + arrivals), 2023. Net flow is positive where arrivals exceed departures.\\label{tab:top10}",
+  col.names = c("Station", "Capacity", "Total Activity", "Net Flow", "Trips/Dock/Day")
+) |>
+  kable_styling(
+    latex_options = c("hold_position", "scale_down"),
+    font_size     = 9
+  ) |>
+  column_spec(1, width = "5.8cm")
+```
+
+Net flow imbalance reveals the system's most significant operational challenge. King Street West at Bay Street recorded a net inflow of +27,328 over the year — approximately 27,000 more bikes arrived than departed. Union Station showed +15,200. These stations function as bike sinks: morning commutes carry bikes toward the Financial District, and they do not return under their own power. The counterpart exporters are residential neighbourhoods at the northern and eastern edge of the downtown: Bay Street at Wellesley Street West ($-$11,715), Sherbourne Street at Wellesley Street East ($-$9,776), and Dundonald Street at Church Street ($-$7,296). The magnitude of this imbalance implies substantial truck-based rebalancing, the cost of which falls on the operator and ultimately on the fare structure of the system.
+
+## Neighbourhood Coverage and the Dual Transit Gap
+
+```{r gap-load}
+gap <- read_csv(
+  file.path(OUT, "neighbourhood_gap_matrix.csv"),
+  show_col_types = FALSE
+) |>
+  mutate(
+    gap_quadrant = str_replace_all(gap_quadrant, "\n", " ")
+  )
+```
+
+Applying a 500-metre coverage buffer around all 750 active stations reveals that 62 of 158 Toronto neighbourhoods (39%) have high coverage — more than 70% of their area within walking distance of a station — while 36 neighbourhoods (23%) have zero coverage whatsoever. A further 17 have coverage below 10%. Combined, one third of the city's neighbourhoods have negligible or absent bike share access.
+
+Figure \ref{fig:quadrant} classifies all 158 neighbourhoods on two dimensions: bike share coverage and surface transit service frequency. Using median values as thresholds — 40.8% coverage and 122 weekday bus trips per stop — produces a near-even four-way split. Forty-five neighbourhoods are well-served on both dimensions, 34 have bike coverage but below-median bus frequency, 34 have strong bus service but below-median bike coverage, and 45 fall below both thresholds simultaneously.
+
+```{r quadrant, fig.cap="Transit gap quadrant: 158 Toronto neighbourhoods classified by bike share coverage (y-axis) and weekday surface transit frequency (x-axis). Dashed lines mark median thresholds. The 45 dual-gap neighbourhoods (bottom-left, red) are the primary candidates for network investment. Bubble size encodes distance from downtown.\\label{fig:quadrant}", fig.height=4.5}
+quad_colours <- c(
+  "Dual gap (bike-poor + bus-poor)" = "#B83228",
+  "Bike gap only (bus-rich)"        = "#C06318",
+  "Bus gap only (bike-rich)"        = "#1756A4",
+  "Well served"                     = "#2A7A4B"
+)
+
+cov_med  <- median(gap$coverage_pct,       na.rm = TRUE)
+freq_med <- median(gap$avg_trips_per_stop, na.rm = TRUE)
+
+ggplot(
+  gap,
+  aes(
+    x      = avg_trips_per_stop,
+    y      = coverage_pct,
+    colour = gap_quadrant,
+    size   = dist_to_downtown_km
+  )
+) +
+  geom_vline(xintercept = freq_med, linetype = "dashed", colour = "grey70", linewidth = 0.4) +
+  geom_hline(yintercept = cov_med,  linetype = "dashed", colour = "grey70", linewidth = 0.4) +
+  geom_point(alpha = 0.75) +
+  scale_colour_manual(values = quad_colours, name = NULL) +
+  scale_size_continuous(range = c(1.5, 5), name = "km from\ndowntown", guide = guide_legend(order = 2)) +
+  scale_x_continuous(expand = expansion(mult = 0.05)) +
+  scale_y_continuous(
+    labels = scales::label_percent(scale = 1),
+    expand = expansion(mult = 0.05)
+  ) +
+  annotate(
+    "text", x = freq_med * 0.35, y = cov_med * 0.12,
+    label = "← Invest here first", size = 2.6,
+    colour = "#B83228", fontface = "italic"
+  ) +
+  labs(
+    x = "Avg. weekday bus departures per stop",
+    y = "Bike share coverage\n(% area within 500 m of station)"
+  ) +
+  theme_minimal(base_size = 10) +
+  theme(
+    legend.position  = "right",
+    panel.grid.minor = element_blank(),
+    plot.margin      = margin(4, 4, 4, 4)
+  )
+```
+
+The 45 dual-gap neighbourhoods are the central finding of this analysis. Table \ref{tab:dualgap} presents a selection ordered by distance from downtown. These communities have bus service — their stops record tens of thousands of weekday departures — but at densities and frequencies that leave residents with limited practical transit options. They have no meaningful bike share presence, and they are without exception located in the outer city.
+
+```{r dualgap-table}
+dual_sample <- gap |>
+  filter(str_detect(gap_quadrant, "Dual gap")) |>
+  arrange(dist_to_downtown_km) |>
+  filter(AREA_NAME %in% c(
+    "Lawrence Park South", "Englemount-Lawrence", "Victoria Village",
+    "St.Andrew-Windfields", "Islington", "Rexdale-Kipling",
+    "Agincourt South-Malvern West", "Malvern East", "Centennial Scarborough"
+  )) |>
+  select(AREA_NAME, coverage_pct, avg_trips_per_stop, dist_to_downtown_km) |>
+  mutate(
+    coverage_pct          = paste0(round(coverage_pct, 1), "%"),
+    avg_trips_per_stop    = round(avg_trips_per_stop),
+    dist_to_downtown_km   = paste0(round(dist_to_downtown_km, 1), " km")
+  )
+
+kable(
+  dual_sample,
+  format   = "latex",
+  booktabs = TRUE,
+  caption  = "Selected dual-gap neighbourhoods: bike coverage below 40.8\\% and average weekday bus trips per stop below 122, ordered by distance from downtown.\\label{tab:dualgap}",
+  col.names = c("Neighbourhood", "Bike Coverage", "Bus Trips/Stop/Day", "Distance from Downtown")
+) |>
+  kable_styling(latex_options = c("hold_position"), font_size = 10) |>
+  column_spec(1, width = "5cm")
+```
+
+# Discussion
+
+## A System Shaped by Its Origins
+
+Bike Share Toronto launched in 2011 in the downtown core and has expanded outward incrementally. The utilization and coverage patterns revealed in this analysis reflect that origin: the system has been built where it was easy to build, not necessarily where it was most needed. The concentration of high-activity stations within a roughly five-kilometre radius of Union Station is consistent with a program that has grown along lines of existing cycling culture rather than in response to a city-wide mobility need.
+
+This pattern is not unique to Toronto. Research on bike share equity in North American cities consistently finds that systems concentrate first in high-income, transit-rich neighbourhoods, and that later expansions toward the suburban periphery yield lower ridership — which is then cited as evidence that outer-city demand is weak [@fishman_2016; @hosford_winters_2018]. Lower ridership in sparse networks is better understood as a consequence of sparsity. A single station surrounded by no other stations offers an incomplete trip; a network of stations enables the network effects that make bike share useful. The communities in Table \ref{tab:dualgap} have not been proven to lack cycling demand — they have not been given the infrastructure necessary to express it.
+
+## The Rebalancing Cost of Concentration
+
+The net flow analysis adds an operational dimension to the equity argument. The combined net inflow at the top five importing stations exceeds 70,000 trips annually, each requiring a corresponding truck movement to return bikes to residential exporters. This cost is a direct consequence of the system's geographic concentration.
+
+A more distributed network would exhibit smaller net flows at individual stations, because trips would more naturally circulate within sub-networks closer to where cyclists live and work. Outer-neighbourhood stations placed near high-frequency bus stops would generate self-balancing flows, since residents completing transit-to-bike trips return to their origin neighbourhood at the end of the day. The rebalancing argument is therefore not only an equity argument but an operational efficiency one: a more spatially equitable network is also a less expensive network to operate.
+
+## Policy Implications
+
+The dual-gap analysis identifies 45 neighbourhoods where the case for new station investment is strongest on both equity and operational grounds. A practical investment strategy would prioritise stations within 200 metres of the highest-frequency bus stops in these communities, beginning with those closest to the existing network boundary — Lawrence Park South, Englemount-Lawrence, Victoria Village — before extending to Scarborough and Etobicoke. This sequencing builds outward from the existing network rather than creating isolated outposts that fail to form a usable sub-network.
+
+The 93.6% casual membership rate merits separate attention. If the system is to function as genuine mobility infrastructure for outer-city residents rather than a downtown amenity for occasional users, the annual membership price point and promotional strategies must be reconsidered alongside any expansion of the station network. Infrastructure access and pricing access are both necessary conditions; neither alone is sufficient.
+
+## Limitations and Future Research
+
+This analysis has several limitations. The coverage buffer uses Euclidean distance rather than network distance, which may overstate coverage where pedestrian infrastructure is poor or street connectivity is limited. The bus frequency metric treats all surface routes equivalently, which may understate effective transit quality where express and local routes share the same stop. The study does not incorporate socioeconomic or demographic data at the neighbourhood level, which would strengthen the equity argument by formally linking coverage gaps to indicators of transit dependency and income.
+
+Future research could integrate 2021 Census data at the dissemination area level, use network-distance buffers, and extend the analysis across multiple years to track whether coverage gaps narrow as the system expands. A comparative study examining similar spatial patterns in Montreal, Vancouver, or other Canadian cities with mature bike share programs would add generalizability to the findings presented here.
+
+# References {.unnumbered}
