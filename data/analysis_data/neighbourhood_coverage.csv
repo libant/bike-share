@@ -1,0 +1,159 @@
+AREA_NAME,coverage_pct,coverage_cat,dist_to_downtown_km
+South Eglinton-Davisville,100.0,High (>70%),6.03
+North Toronto,100.0,High (>70%),6.97
+Dovercourt Village,99.9,High (>70%),4.19
+Junction-Wallace Emerson,99.5,High (>70%),5.35
+Yonge-Bay Corridor,100.0,High (>70%),0.54
+Bay-Cloverhill,100.0,High (>70%),1.92
+Bendale-Glen Andrew,0.0,None (0%),16.47
+Downsview,30.9,Partial (10–40%),12.46
+Oakdale-Beverley Heights,8.2,Minimal (<10%),13.48
+Avondale,0.0,None (0%),12.62
+East Willowdale,1.2,Minimal (<10%),13.99
+Yonge-Doris,16.7,Partial (10–40%),13.91
+Fenside-Parkwoods,0.0,None (0%),13.29
+Parkwoods-O'Connor Hills,0.0,None (0%),12.1
+East L'Amoreaux,0.0,None (0%),17.89
+L'Amoreaux West,0.0,None (0%),16.73
+Malvern East,0.0,None (0%),21.78
+Malvern West,0.0,None (0%),21.38
+Morningside Heights,0.0,None (0%),24.94
+West Rouge,12.0,Partial (10–40%),25.27
+Woburn North,0.0,None (0%),18.23
+Golfdale-Cedarbrae-Woburn,5.1,Minimal (<10%),18.1
+Guildwood,39.3,Partial (10–40%),18.85
+Scarborough Village,42.2,Good (40–70%),16.76
+Eglinton East,0.1,Minimal (<10%),15.14
+West Hill,20.5,Partial (10–40%),21.28
+Morningside,7.3,Minimal (<10%),20.59
+Highland Creek,16.1,Partial (10–40%),22.93
+Centennial Scarborough,7.2,Minimal (<10%),23.94
+Milliken,0.0,None (0%),21.06
+Agincourt North,0.0,None (0%),19.84
+Agincourt South-Malvern West,0.0,None (0%),18.26
+Dorset Park,0.0,None (0%),14.94
+Ionview,0.0,None (0%),13.18
+Kennedy Park,4.5,Minimal (<10%),13.12
+Cliffcrest,39.9,Partial (10–40%),14.41
+Birchcliffe-Cliffside,77.7,High (>70%),10.84
+Downtown Yonge East,100.0,High (>70%),0.91
+Church-Wellesley,100.0,High (>70%),2.03
+St Lawrence-East Bayfront-The Islands,31.6,Partial (10–40%),1.9
+Harbourfront-CityPlace,100.0,High (>70%),1.06
+Wellington Place,100.0,High (>70%),0.96
+Fort York-Liberty Village,98.4,High (>70%),2.85
+West Queen West,100.0,High (>70%),2.31
+Humber Bay Shores,88.0,High (>70%),8.36
+Mimico-Queensway,45.5,Good (40–70%),10.59
+Etobicoke City Centre,7.5,Minimal (<10%),12.95
+Islington,8.8,Minimal (<10%),13.26
+Bendale South,0.0,None (0%),15.36
+Caledonia-Fairbank,86.9,High (>70%),7.34
+Briar Hill-Belgravia,81.3,High (>70%),7.97
+Oakwood Village,82.8,High (>70%),6.41
+Humewood-Cedarvale,81.7,High (>70%),6.0
+Lawrence Park North,44.5,Good (40–70%),9.26
+Lawrence Park South,40.0,Partial (10–40%),7.89
+Forest Hill North,81.4,High (>70%),7.21
+Forest Hill South,58.0,Good (40–70%),5.74
+Yonge-Eglinton,98.2,High (>70%),6.5
+Mount Pleasant East,70.1,High (>70%),6.3
+Rosedale-Moore Park,91.5,High (>70%),3.87
+Yonge-St.Clair,99.7,High (>70%),4.57
+Casa Loma,98.8,High (>70%),4.25
+Annex,100.0,High (>70%),3.1
+Wychwood,100.0,High (>70%),4.68
+Corso Italia-Davenport,94.0,High (>70%),6.14
+Weston-Pelham Park,92.1,High (>70%),6.85
+Junction Area,100.0,High (>70%),7.45
+Oakridge,92.8,High (>70%),9.98
+Clairlea-Birchmount,57.5,Good (40–70%),10.97
+Wexford/Maryvale,0.0,None (0%),13.08
+Tam O'Shanter-Sullivan,0.0,None (0%),16.03
+Steeles,0.0,None (0%),18.98
+Mount Dennis,56.2,Good (40–70%),10.42
+Lambton Baby Point,79.7,High (>70%),9.16
+Weston,59.8,Good (40–70%),12.29
+Beechborough-Greenbrook,84.2,High (>70%),9.24
+Rockcliffe-Smythe,58.2,Good (40–70%),9.45
+Keelesdale-Eglinton West,96.0,High (>70%),8.25
+Palmerston-Little Italy,100.0,High (>70%),3.09
+University,100.0,High (>70%),2.16
+Kensington-Chinatown,100.0,High (>70%),1.28
+North St.James Town,100.0,High (>70%),2.48
+Moss Park,100.0,High (>70%),1.58
+Regent Park,100.0,High (>70%),2.26
+Cabbagetown-South St.James Town,100.0,High (>70%),2.57
+South Riverdale,63.5,Good (40–70%),3.84
+Blake-Jones,95.9,High (>70%),4.83
+North Riverdale,99.7,High (>70%),3.7
+Playter Estates-Danforth,100.0,High (>70%),4.19
+Danforth,100.0,High (>70%),5.87
+Greenwood-Coxwell,99.9,High (>70%),5.47
+Woodbine Corridor,99.1,High (>70%),6.33
+The Beaches,99.7,High (>70%),7.21
+East End-Danforth,95.6,High (>70%),7.86
+Taylor-Massey,93.5,High (>70%),8.76
+Woodbine-Lumsden,88.9,High (>70%),7.74
+Danforth East York,69.6,Good (40–70%),6.21
+Old East York,71.0,High (>70%),6.64
+Runnymede-Bloor West Village,99.1,High (>70%),8.36
+High Park North,99.4,High (>70%),6.78
+High Park-Swansea,96.3,High (>70%),6.84
+Roncesvalles,100.0,High (>70%),4.83
+South Parkdale,100.0,High (>70%),4.7
+Little Portugal,100.0,High (>70%),3.8
+Dufferin Grove,100.0,High (>70%),4.44
+Trinity-Bellwoods,100.0,High (>70%),2.6
+Don Valley Village,0.0,None (0%),15.21
+Pleasant View,0.0,None (0%),15.91
+Flemingdon Park,70.6,High (>70%),8.57
+Victoria Village,24.8,Partial (10–40%),10.49
+Banbury-Don Mills,12.6,Partial (10–40%),10.31
+Bridle Path-Sunnybrook-York Mills,29.8,Partial (10–40%),9.22
+St.Andrew-Windfields,0.0,None (0%),12.02
+Bedford Park-Nortown,0.8,Minimal (<10%),9.73
+Lansing-Westgate,0.0,None (0%),12.26
+Willowdale West,2.5,Minimal (<10%),14.14
+Newtonbrook West,12.5,Partial (10–40%),15.79
+Westminster-Branson,30.9,Partial (10–40%),15.55
+Bathurst Manor,14.3,Partial (10–40%),14.23
+Clanton Park,0.0,None (0%),11.6
+Englemount-Lawrence,13.7,Partial (10–40%),9.14
+Yorkdale-Glen Park,29.7,Partial (10–40%),9.5
+Brookhaven-Amesbury,41.4,Good (40–70%),10.15
+Maple Leaf,0.9,Minimal (<10%),10.86
+Rustic,19.2,Partial (10–40%),11.64
+York University Heights,40.3,Good (40–70%),15.6
+Glenfield-Jane Heights,25.8,Partial (10–40%),15.09
+Broadview North,79.6,High (>70%),5.04
+Leaside-Bennington,58.8,Good (40–70%),6.34
+Thorncliffe Park,69.0,Good (40–70%),7.15
+O'Connor-Parkview,63.4,Good (40–70%),8.68
+Henry Farm,0.0,None (0%),14.08
+Bayview Village,0.0,None (0%),14.26
+Newtonbrook East,8.2,Minimal (<10%),16.04
+Bayview Woods-Steeles,0.0,None (0%),16.52
+Hillcrest Village,0.0,None (0%),17.36
+Alderwood,8.6,Minimal (<10%),13.65
+Long Branch,77.9,High (>70%),13.61
+New Toronto,61.3,Good (40–70%),11.54
+Stonegate-Queensway,48.1,Good (40–70%),9.62
+Kingsway South,57.4,Good (40–70%),10.29
+Etobicoke West Mall,0.0,None (0%),14.99
+Markland Wood,0.0,None (0%),15.43
+Eringate-Centennial-West Deane,0.0,None (0%),15.95
+Princess-Rosethorn,0.0,None (0%),13.17
+Edenbridge-Humber Valley,25.5,Partial (10–40%),11.51
+Humber Heights-Westmount,29.5,Partial (10–40%),12.25
+Willowridge-Martingrove-Richview,0.0,None (0%),14.34
+Kingsview Village-The Westway,4.5,Minimal (<10%),14.43
+Elms-Old Rexdale,22.7,Partial (10–40%),15.66
+Rexdale-Kipling,0.0,None (0%),16.98
+Thistletown-Beaumond Heights,5.5,Minimal (<10%),17.63
+Mount Olive-Silverstone-Jamestown,0.0,None (0%),19.77
+West Humber-Clairville,0.0,None (0%),18.77
+Black Creek,30.0,Partial (10–40%),17.13
+Pelmo Park-Humberlea,15.7,Partial (10–40%),14.01
+Humbermede,19.5,Partial (10–40%),16.63
+Humber Summit,2.5,Minimal (<10%),18.6
