@@ -1,0 +1,494 @@
+[
+  {
+    "month": "01",
+    "n_rows": 180135,
+    "n_cols": 10,
+    "columns": [
+      "Trip Id",
+      "Trip  Duration",
+      "Start Station Id",
+      "Start Time",
+      "Start Station Name",
+      "End Station Id",
+      "End Time",
+      "End Station Name",
+      "Bike Id",
+      "User Type"
+    ],
+    "dtypes": {
+      "Trip Id": "int64",
+      "Trip  Duration": "int64",
+      "Start Station Id": "int64",
+      "Start Time": "str",
+      "Start Station Name": "str",
+      "End Station Id": "float64",
+      "End Time": "str",
+      "End Station Name": "str",
+      "Bike Id": "int64",
+      "User Type": "str"
+    },
+    "null_pct": {
+      "Trip Id": 0.0,
+      "Trip  Duration": 0.0,
+      "Start Station Id": 0.0,
+      "Start Time": 0.0,
+      "Start Station Name": 5.9,
+      "End Station Id": 0.06,
+      "End Time": 0.0,
+      "End Station Name": 6.0,
+      "Bike Id": 0.0,
+      "User Type": 0.0
+    }
+  },
+  {
+    "month": "02",
+    "n_rows": 172776,
+    "n_cols": 10,
+    "columns": [
+      "Trip Id",
+      "Trip  Duration",
+      "Start Station Id",
+      "Start Time",
+      "Start Station Name",
+      "End Station Id",
+      "End Time",
+      "End Station Name",
+      "Bike Id",
+      "User Type"
+    ],
+    "dtypes": {
+      "Trip Id": "int64",
+      "Trip  Duration": "int64",
+      "Start Station Id": "int64",
+      "Start Time": "str",
+      "Start Station Name": "str",
+      "End Station Id": "float64",
+      "End Time": "str",
+      "End Station Name": "str",
+      "Bike Id": "int64",
+      "User Type": "str"
+    },
+    "null_pct": {
+      "Trip Id": 0.0,
+      "Trip  Duration": 0.0,
+      "Start Station Id": 0.0,
+      "Start Time": 0.0,
+      "Start Station Name": 6.29,
+      "End Station Id": 0.03,
+      "End Time": 0.0,
+      "End Station Name": 6.49,
+      "Bike Id": 0.0,
+      "User Type": 0.0
+    }
+  },
+  {
+    "month": "03",
+    "n_rows": 224545,
+    "n_cols": 10,
+    "columns": [
+      "Trip Id",
+      "Trip  Duration",
+      "Start Station Id",
+      "Start Time",
+      "Start Station Name",
+      "End Station Id",
+      "End Time",
+      "End Station Name",
+      "Bike Id",
+      "User Type"
+    ],
+    "dtypes": {
+      "Trip Id": "int64",
+      "Trip  Duration": "int64",
+      "Start Station Id": "int64",
+      "Start Time": "str",
+      "Start Station Name": "str",
+      "End Station Id": "float64",
+      "End Time": "str",
+      "End Station Name": "str",
+      "Bike Id": "int64",
+      "User Type": "str"
+    },
+    "null_pct": {
+      "Trip Id": 0.0,
+      "Trip  Duration": 0.0,
+      "Start Station Id": 0.0,
+      "Start Time": 0.0,
+      "Start Station Name": 6.88,
+      "End Station Id": 0.04,
+      "End Time": 0.0,
+      "End Station Name": 7.1,
+      "Bike Id": 0.0,
+      "User Type": 0.0
+    }
+  },
+  {
+    "month": "04",
+    "n_rows": 380346,
+    "n_cols": 10,
+    "columns": [
+      "Trip Id",
+      "Trip  Duration",
+      "Start Station Id",
+      "Start Time",
+      "Start Station Name",
+      "End Station Id",
+      "End Time",
+      "End Station Name",
+      "Bike Id",
+      "User Type"
+    ],
+    "dtypes": {
+      "Trip Id": "int64",
+      "Trip  Duration": "int64",
+      "Start Station Id": "int64",
+      "Start Time": "str",
+      "Start Station Name": "str",
+      "End Station Id": "float64",
+      "End Time": "str",
+      "End Station Name": "str",
+      "Bike Id": "int64",
+      "User Type": "str"
+    },
+    "null_pct": {
+      "Trip Id": 0.0,
+      "Trip  Duration": 0.0,
+      "Start Station Id": 0.0,
+      "Start Time": 0.0,
+      "Start Station Name": 8.25,
+      "End Station Id": 0.05,
+      "End Time": 0.0,
+      "End Station Name": 8.31,
+      "Bike Id": 0.0,
+      "User Type": 0.0
+    }
+  },
+  {
+    "month": "05",
+    "n_rows": 589217,
+    "n_cols": 10,
+    "columns": [
+      "Trip Id",
+      "Trip  Duration",
+      "Start Station Id",
+      "Start Time",
+      "Start Station Name",
+      "End Station Id",
+      "End Time",
+      "End Station Name",
+      "Bike Id",
+      "User Type"
+    ],
+    "dtypes": {
+      "Trip Id": "int64",
+      "Trip  Duration": "int64",
+      "Start Station Id": "int64",
+      "Start Time": "str",
+      "Start Station Name": "str",
+      "End Station Id": "float64",
+      "End Time": "str",
+      "End Station Name": "str",
+      "Bike Id": "int64",
+      "User Type": "str"
+    },
+    "null_pct": {
+      "Trip Id": 0.0,
+      "Trip  Duration": 0.0,
+      "Start Station Id": 0.0,
+      "Start Time": 0.0,
+      "Start Station Name": 8.77,
+      "End Station Id": 0.03,
+      "End Time": 0.0,
+      "End Station Name": 8.78,
+      "Bike Id": 0.0,
+      "User Type": 0.0
+    }
+  },
+  {
+    "month": "06",
+    "n_rows": 663691,
+    "n_cols": 10,
+    "columns": [
+      "Trip Id",
+      "Trip  Duration",
+      "Start Station Id",
+      "Start Time",
+      "Start Station Name",
+      "End Station Id",
+      "End Time",
+      "End Station Name",
+      "Bike Id",
+      "User Type"
+    ],
+    "dtypes": {
+      "Trip Id": "int64",
+      "Trip  Duration": "int64",
+      "Start Station Id": "int64",
+      "Start Time": "str",
+      "Start Station Name": "str",
+      "End Station Id": "float64",
+      "End Time": "str",
+      "End Station Name": "str",
+      "Bike Id": "int64",
+      "User Type": "str"
+    },
+    "null_pct": {
+      "Trip Id": 0.0,
+      "Trip  Duration": 0.0,
+      "Start Station Id": 0.0,
+      "Start Time": 0.0,
+      "Start Station Name": 10.02,
+      "End Station Id": 0.03,
+      "End Time": 0.0,
+      "End Station Name": 10.09,
+      "Bike Id": 0.0,
+      "User Type": 0.0
+    }
+  },
+  {
+    "month": "07",
+    "n_rows": 735924,
+    "n_cols": 10,
+    "columns": [
+      "Trip Id",
+      "Trip  Duration",
+      "Start Station Id",
+      "Start Time",
+      "Start Station Name",
+      "End Station Id",
+      "End Time",
+      "End Station Name",
+      "Bike Id",
+      "User Type"
+    ],
+    "dtypes": {
+      "Trip Id": "int64",
+      "Trip  Duration": "int64",
+      "Start Station Id": "int64",
+      "Start Time": "str",
+      "Start Station Name": "str",
+      "End Station Id": "float64",
+      "End Time": "str",
+      "End Station Name": "str",
+      "Bike Id": "int64",
+      "User Type": "str"
+    },
+    "null_pct": {
+      "Trip Id": 0.0,
+      "Trip  Duration": 0.0,
+      "Start Station Id": 0.0,
+      "Start Time": 0.0,
+      "Start Station Name": 10.74,
+      "End Station Id": 0.04,
+      "End Time": 0.0,
+      "End Station Name": 10.76,
+      "Bike Id": 0.0,
+      "User Type": 0.0
+    }
+  },
+  {
+    "month": "08",
+    "n_rows": 760141,
+    "n_cols": 10,
+    "columns": [
+      "Trip Id",
+      "Trip  Duration",
+      "Start Station Id",
+      "Start Time",
+      "Start Station Name",
+      "End Station Id",
+      "End Time",
+      "End Station Name",
+      "Bike Id",
+      "User Type"
+    ],
+    "dtypes": {
+      "Trip Id": "int64",
+      "Trip  Duration": "int64",
+      "Start Station Id": "int64",
+      "Start Time": "str",
+      "Start Station Name": "str",
+      "End Station Id": "float64",
+      "End Time": "str",
+      "End Station Name": "str",
+      "Bike Id": "int64",
+      "User Type": "str"
+    },
+    "null_pct": {
+      "Trip Id": 0.0,
+      "Trip  Duration": 0.0,
+      "Start Station Id": 0.0,
+      "Start Time": 0.0,
+      "Start Station Name": 11.46,
+      "End Station Id": 0.05,
+      "End Time": 0.0,
+      "End Station Name": 11.43,
+      "Bike Id": 0.0,
+      "User Type": 0.0
+    }
+  },
+  {
+    "month": "09",
+    "n_rows": 754303,
+    "n_cols": 10,
+    "columns": [
+      "Trip Id",
+      "Trip  Duration",
+      "Start Station Id",
+      "Start Time",
+      "Start Station Name",
+      "End Station Id",
+      "End Time",
+      "End Station Name",
+      "Bike Id",
+      "User Type"
+    ],
+    "dtypes": {
+      "Trip Id": "int64",
+      "Trip  Duration": "int64",
+      "Start Station Id": "int64",
+      "Start Time": "str",
+      "Start Station Name": "str",
+      "End Station Id": "float64",
+      "End Time": "str",
+      "End Station Name": "str",
+      "Bike Id": "int64",
+      "User Type": "str"
+    },
+    "null_pct": {
+      "Trip Id": 0.0,
+      "Trip  Duration": 0.0,
+      "Start Station Id": 0.0,
+      "Start Time": 0.0,
+      "Start Station Name": 11.89,
+      "End Station Id": 0.07,
+      "End Time": 0.0,
+      "End Station Name": 11.97,
+      "Bike Id": 0.0,
+      "User Type": 0.0
+    }
+  },
+  {
+    "month": "10",
+    "n_rows": 601075,
+    "n_cols": 10,
+    "columns": [
+      "Trip Id",
+      "Trip  Duration",
+      "Start Station Id",
+      "Start Time",
+      "Start Station Name",
+      "End Station Id",
+      "End Time",
+      "End Station Name",
+      "Bike Id",
+      "User Type"
+    ],
+    "dtypes": {
+      "Trip Id": "int64",
+      "Trip  Duration": "int64",
+      "Start Station Id": "int64",
+      "Start Time": "str",
+      "Start Station Name": "str",
+      "End Station Id": "float64",
+      "End Time": "str",
+      "End Station Name": "str",
+      "Bike Id": "int64",
+      "User Type": "str"
+    },
+    "null_pct": {
+      "Trip Id": 0.0,
+      "Trip  Duration": 0.0,
+      "Start Station Id": 0.0,
+      "Start Time": 0.0,
+      "Start Station Name": 11.92,
+      "End Station Id": 0.07,
+      "End Time": 0.0,
+      "End Station Name": 12.06,
+      "Bike Id": 0.0,
+      "User Type": 0.0
+    }
+  },
+  {
+    "month": "11",
+    "n_rows": 393873,
+    "n_cols": 10,
+    "columns": [
+      "Trip Id",
+      "Trip  Duration",
+      "Start Station Id",
+      "Start Time",
+      "Start Station Name",
+      "End Station Id",
+      "End Time",
+      "End Station Name",
+      "Bike Id",
+      "User Type"
+    ],
+    "dtypes": {
+      "Trip Id": "int64",
+      "Trip  Duration": "int64",
+      "Start Station Id": "int64",
+      "Start Time": "str",
+      "Start Station Name": "str",
+      "End Station Id": "float64",
+      "End Time": "str",
+      "End Station Name": "str",
+      "Bike Id": "int64",
+      "User Type": "str"
+    },
+    "null_pct": {
+      "Trip Id": 0.0,
+      "Trip  Duration": 0.0,
+      "Start Station Id": 0.0,
+      "Start Time": 0.0,
+      "Start Station Name": 12.15,
+      "End Station Id": 0.06,
+      "End Time": 0.0,
+      "End Station Name": 12.19,
+      "Bike Id": 0.0,
+      "User Type": 0.0
+    }
+  },
+  {
+    "month": "12",
+    "n_rows": 257115,
+    "n_cols": 10,
+    "columns": [
+      "Trip Id",
+      "Trip  Duration",
+      "Start Station Id",
+      "Start Time",
+      "Start Station Name",
+      "End Station Id",
+      "End Time",
+      "End Station Name",
+      "Bike Id",
+      "User Type"
+    ],
+    "dtypes": {
+      "Trip Id": "int64",
+      "Trip  Duration": "int64",
+      "Start Station Id": "int64",
+      "Start Time": "str",
+      "Start Station Name": "str",
+      "End Station Id": "float64",
+      "End Time": "str",
+      "End Station Name": "str",
+      "Bike Id": "int64",
+      "User Type": "str"
+    },
+    "null_pct": {
+      "Trip Id": 0.0,
+      "Trip  Duration": 0.0,
+      "Start Station Id": 0.0,
+      "Start Time": 0.0,
+      "Start Station Name": 12.9,
+      "End Station Id": 0.09,
+      "End Time": 0.0,
+      "End Station Name": 12.99,
+      "Bike Id": 0.0,
+      "User Type": 0.0
+    }
+  }
+]
