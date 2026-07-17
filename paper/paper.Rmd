@@ -1,6 +1,6 @@
 ---
 title: "Bikes for Some: How Bike Share Toronto Functions as a Downtown Transit Connector and What That Means for the Neighbourhoods Left Behind"
-author: "Victor Timir"
+author: "Liban Timir"
 date: "July 14, 2026"
 output:
   pdf_document:
